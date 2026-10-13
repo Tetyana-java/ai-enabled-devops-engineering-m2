@@ -1,0 +1,12 @@
+# secrets — never commit
+.env
+*.env
+
+# IDE
+.idea/
+
+# run artifacts / pulled data
+keys.txt
+pull-out.csv
+logs/
+*.log

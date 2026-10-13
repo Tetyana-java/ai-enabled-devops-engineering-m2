@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./scripts/pull-order-errors.sh*)",
+      "Bash(./scripts/enable-remediation.sh*)",
+      "Bash(./scripts/trigger-remediation.sh*)",
+      "Bash(./scripts/restore-config.sh*)"
+    ],
+    "deny": [
+      "Edit",
+      "Write",
+      "WebFetch",
+      "Bash(curl *)",
+      "Bash(kubectl *)",
+      "Bash(git push*)",
+      "Read(./.env)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          { "type": "command", "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/guard.sh" }
+        ]
+      }
+    ]
+  }
+}
